@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'haystack',
     'blog',
     'comments',
+    # 'ckeditor',  # 富文本编辑器
+    # 'ckeditor_uploader',  # 富文本编辑器上传图片模块
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,17 @@ HAYSTACK_CONNECTIONS = {
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+
+# # 富文本编辑器ckeditor配置
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',  # 工具条功能
+#         'height': 300,  # 编辑器高度
+#         # 'width': 300,  # 编辑器宽
+#     },
+# }
+# CKEDITOR_UPLOAD_PATH = './blog/static'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
