@@ -104,8 +104,6 @@ class Post(models.Model):
     # 因为我们规定一篇文章只能有一个作者，而一个作者可能会写多篇文章，因此这是一对多的关联关系，和 Category 类似。
     author = models.ForeignKey(User, verbose_name='作者')
 
-    pictures = models.ManyToManyField(Picture, blank=True, verbose_name='图片')
-
     def __str__(self):
         return self.title
 
