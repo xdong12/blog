@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 from django.views.static import serve
 
 from blog.feeds import AllPostsRssFeed
+from blogproject import settings
 from blogproject.settings import MEDIA_ROOT
 
 urlpatterns = [
@@ -30,4 +32,10 @@ urlpatterns = [
     url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
     # url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+url(r'mdeditor/', include('mdeditor.urls')),
 ]
+
+
+if settings.DEBUG:
+# static files (images, css, javascript, etc.)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

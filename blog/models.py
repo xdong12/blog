@@ -6,6 +6,8 @@ from django.urls import reverse
 from django.utils.six import python_2_unicode_compatible
 from django.utils.html import strip_tags
 
+from mdeditor.fields import MDTextField
+
 
 # python_2_unicode_compatible 装饰器用于兼容 Python2
 @python_2_unicode_compatible
@@ -46,17 +48,17 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-class Picture(models.Model):
-    title = models.CharField(default='', max_length=100, verbose_name='标题')
-    image = models.ImageField(upload_to='image',verbose_name='图片')
-    link = models.CharField(default=0, max_length=500, verbose_name='地址')
-
-    class Meta:
-        verbose_name = '图片'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.title + ' : ' + self.link
+# class Picture(models.Model):
+#     title = models.CharField(default='', max_length=100, verbose_name='标题')
+#     image = models.ImageField(upload_to='image',verbose_name='图片')
+#     link = models.CharField(default=0, max_length=500, verbose_name='地址')
+#
+#     class Meta:
+#         verbose_name = '图片'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.title + ' : ' + self.link
 
 @python_2_unicode_compatible
 class Post(models.Model):
@@ -74,8 +76,8 @@ class Post(models.Model):
 
     # 文章正文，我们使用了 TextField。
     # 存储比较短的字符串可以使用 CharField，但对于文章的正文来说可能会是一大段文本，因此使用 TextField 来存储大段文本。
-    body = models.TextField(verbose_name='正文')
-
+    # body = models.TextField(verbose_name='正文')
+    body = MDTextField(verbose_name='正文')
     # 这两个列分别表示文章的创建时间和最后一次修改时间，存储时间的字段用 DateTimeField 类型。
     created_time = models.DateTimeField(verbose_name='创建时间')
     modified_time = models.DateTimeField(verbose_name='修改时间')

@@ -24,7 +24,7 @@ SECRET_KEY = 'i3k%m-808v3_)^h7975iw4v&fl5chq41^19j@u+b*vx7dvw*q$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '47.107.86.48']
+ALLOWED_HOSTS = ['127.0.0.1', '47.107.86.48', 'www.xie1.site']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'haystack',
     'blog',
     'comments',
+    'mdeditor',
     # 'ckeditor',  # 富文本编辑器
     # 'ckeditor_uploader',  # 富文本编辑器上传图片模块
 ]
@@ -146,4 +147,16 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # }
 # CKEDITOR_UPLOAD_PATH = './blog/static'
 
+MDEDITOR_CONFIGS = {
+    'default': {
+
+        'height': 500,  # 编辑器高度
+        'width': '85.5%',  # 编辑器宽
+
+    'toolbar_autofixed': True,  # 工具栏是否吸顶
+
+    },
+}
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_URL = '/media/'   #你上传的文件和图片会默认存在/static/media/editor下
