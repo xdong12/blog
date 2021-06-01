@@ -15,6 +15,6 @@ PyMySQL==0.9.3
 pytz==2016.10
 qiniu==7.2.2
 requests==2.21.0
-urllib3==1.24.1
+urllib3==1.26.5
 uWSGI==2.0.18
 Whoosh==2.7.4
